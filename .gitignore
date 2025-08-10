@@ -1,0 +1,46 @@
+#user data
+**/dev-user-data/
+**/DevUserData/
+**/*Config_DEV*
+**/*.conf
+
+#temp data
+**/~*
+
+#win operating files
+**/desktop.ini
+
+#vs local files
+**/.vs/
+**/obj/
+**/*.dbmdl
+**/*.jfm
+**/*.user
+**/desktop.ini
+
+#local db files
+**/Security/
+**/bin/
+
+
+#sec group 1 data - commit only encrypted
+**/*(Sec01)*/** 
+#!**/*(Sec01)*/**/*.gpg
+
+**/*(CONF)*/** 
+**/*(CONF)*
+**/*(EXP)*/** 
+**/*(EXP)*
+#!**/*(CONF)*/**/*.gpg
+#!**/*(CONF)*.gpg
+
+**/desktop.ini
+
+**/.azuredatastudio/
+
+**/Connection*
+
+
+# release files
+**/Rls
+.fake
