@@ -7,6 +7,7 @@
     [Status]    VARCHAR (10)  NULL,
     [Level]     VARCHAR (10)  NOT NULL,
     [Message]   VARCHAR (MAX) NULL,
+    [Detail]    VARCHAR (MAX) NULL,
     CONSTRAINT [CHK_LogLevel] CHECK ([Level]='TRACE' OR [Level]='DEBUG' OR [Level]='INFO' OR [Level]='WARNING' OR [Level]='ERROR' OR [Level]='FATAL'),
     CONSTRAINT [CHK_Stage] CHECK ([Status]='STARTED' OR [Status]='PROCESSING' OR [Status]='FINISHED' OR [Status]='FAILED' OR [Status]='CANCELLED' OR [Status]=NULL)
 );

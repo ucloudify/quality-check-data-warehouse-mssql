@@ -1,17 +1,24 @@
-﻿CREATE PROCEDURE [ctl].[spLogERROR]
+﻿CREATE PROCEDURE [ctl].[spLogEntry]
 ( 
 	@BatchId INT,
     @Timestamp DATETIME = NULL,
 	@Source VARCHAR(256),
     @User VARCHAR(128),
 	@Status VARCHAR(10),
-    @LogLevelConfig INT = 4, -- default log level configuration (0=trace, 1=debug, 2=info, 3=warning, 4=error, 5=fatal)
+	@Level VARCHAR(10),
+    @LevelConfig INT = 4, -- default log level configuration (0=trace, 1=debug, 2=info, 3=warning, 4=error, 5=fatal)
 	@Message VARCHAR(max)
+	
 )
 AS
 BEGIN 
     
-    IF @LogLevelConfig > 4
+    IF (@Level = 'TRACE'	AND @LevelConfig > 0)
+	OR (@Level = 'DEBUG'	AND @LevelConfig > 1)
+	OR (@Level = 'INFO'		AND @LevelConfig > 2)
+	OR (@Level = 'WARNING'	AND @LevelConfig > 3)
+	OR (@Level = 'ERROR'	AND @LevelConfig > 4)
+	OR (@Level = 'FATAL'	AND @LevelConfig > 5)
         RETURN; -- do not log 
     ELSE
 	    INSERT INTO [ctl].[Log] ([BatchId],[Timestamp],[Source],[User],[Status],[Level],[Message])
@@ -21,7 +28,7 @@ BEGIN
 		    @Source,
             @User,
 		    @Status,
-		    'ERROR',
+		    @Level,
 		    @Message
 		    );
 END
