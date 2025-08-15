@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0wb3k78" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.22.0">
+  <bpmn:process id="Process_1pikl8l" isExecutable="true">
+    <bpmn:task id="Activity_1ii5bma" name="Customer&#39;s&#10;code quality checklist">
+      <bpmn:outgoing>Flow_1h314sn</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1ldon80" name="uCloudify&#10;code quality checklist">
+      <bpmn:outgoing>Flow_0bft45d</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0khi5o8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_11tkv8e" name="Project&#10;code quality checklist">
+      <bpmn:incoming>Flow_0bft45d</bpmn:incoming>
+      <bpmn:incoming>Flow_1thrjes</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0bft45d" name="Minimum quality requirements" sourceRef="Activity_1ldon80" targetRef="Activity_11tkv8e" />
+    <bpmn:exclusiveGateway id="Gateway_1vjbv16" name="Gap analysis">
+      <bpmn:incoming>Flow_0khi5o8</bpmn:incoming>
+      <bpmn:incoming>Flow_1h314sn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1thrjes</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0khi5o8" sourceRef="Activity_1ldon80" targetRef="Gateway_1vjbv16" />
+    <bpmn:sequenceFlow id="Flow_1h314sn" sourceRef="Activity_1ii5bma" targetRef="Gateway_1vjbv16" />
+    <bpmn:sequenceFlow id="Flow_1thrjes" name="Additional quality requirements" sourceRef="Gateway_1vjbv16" targetRef="Activity_11tkv8e" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1pikl8l">
+      <bpmndi:BPMNShape id="Gateway_1vjbv16_di" bpmnElement="Gateway_1vjbv16" isMarkerVisible="true">
+        <dc:Bounds x="535" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="527" y="255" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ldon80_di" bpmnElement="Activity_1ldon80" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="160" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ii5bma_di" bpmnElement="Activity_1ii5bma">
+        <dc:Bounds x="160" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11tkv8e_di" bpmnElement="Activity_11tkv8e">
+        <dc:Bounds x="860" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0khi5o8_di" bpmnElement="Flow_0khi5o8">
+        <di:waypoint x="260" y="120" />
+        <di:waypoint x="560" y="120" />
+        <di:waypoint x="560" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h314sn_di" bpmnElement="Flow_1h314sn">
+        <di:waypoint x="260" y="220" />
+        <di:waypoint x="535" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1thrjes_di" bpmnElement="Flow_1thrjes">
+        <di:waypoint x="585" y="220" />
+        <di:waypoint x="910" y="220" />
+        <di:waypoint x="910" y="160" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="598" y="186" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bft45d_di" bpmnElement="Flow_0bft45d">
+        <di:waypoint x="260" y="120" />
+        <di:waypoint x="860" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="460" y="86" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
