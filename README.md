@@ -1,5 +1,9 @@
 # Quality Check - Data Warehouse MSSQL
 
+For every project we consider customized quality requirements:
+
+![TbComponentOverview](sample-code-design/illustration-quality-requirements.png) 
+
 This repository: 
 - outlines our internal quality requirements
 - is for evaluation purposes only
